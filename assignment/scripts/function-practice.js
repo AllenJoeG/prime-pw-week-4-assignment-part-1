@@ -99,11 +99,12 @@ function isFirstLetter(letter, string) {
   }
   }
 
-console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
-console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
+console.log( '#8 isFirstLetter - should say true', isFirstLetter('a', 'apple') );
+console.log( '#8 isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 
 // 9. Function to return the sum of all numbers in an array
 let testArray3 = [615, 4, 33, 1515, -100, 41, 61241423];
+
 function sumAll(array) {
   let sum = 0
   for (let x of array){
@@ -113,13 +114,61 @@ function sumAll(array) {
   return sum;
 }
 console.log('#9 result of calling sumAll(testArray3):', sumAll(testArray3));
+console.log('#9 result of calling sumAll(testArray):', sumAll(testArray));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
+let testArray4 = [-5, -10, -200, -5000];
 
-
+function posArray(array) {
+  let retArray = [];
+  for (let x of array){
+    if (x > 0){
+      retArray.push(x);
+    }
+  }
+  return retArray;
+}
+console.log('#10 result of calling posArray(testArray3):', posArray(testArray3));
+console.log('#10 result of calling posArray(testArray4):', posArray(testArray4));
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or
 //     CodeWars(https://www.codewars.com/). Then describe it
 //     here in a comment, write the function, and test it!
+// THE PROBLEM:
+// Complete the solution so that it splits the string into pairs of two characters.
+// If the string contains an odd number of characters then it should replace the
+// missing second character of the final pair with an underscore ('_').
+// SAMPLE TESTS:
+// const { assert } = require('chai');
+// describe("Split Strings", () => {
+//   it("Basic tests", () => {
+//     assert.deepEqual(solution("abcdef"), ["ab", "cd", "ef"]);
+//     assert.deepEqual(solution("abcdefg"), ["ab", "cd", "ef", "g_"]);
+//     assert.deepEqual(solution(""), []);
+//   });
+// });
+// MY SOLUTION
+function solution(str){
+  let splArr = []; //Empty array to build out and return
+  let count = (str.length % 2); //Give me a reference of whether str is odd or even
+  let sliceTwo; //Will be used to slice
+  //First conditional appends the underscore to odd-length strings
+  if (count === 1){
+    str += '_';
+  }
+  //Probably a better way to do this part, but this grabs two letters at a time
+  // based on the counted value of i.
+  for (let i = 0; i < str.length; i++){
+    sliceTwo = str.slice(i, (i+2));
+    splArr.push(sliceTwo);
+    i++;
+  }
+  return splArr;
+}
+// Some examples of it working!
+let testStr = 'flajflkdfjwmen';
+let testStr2 = 'alalakrmdns';
+console.log('#11 calling solution(testStr):', solution(testStr));
+console.log('#11 calling solution(testStr2):', solution(testStr2));
