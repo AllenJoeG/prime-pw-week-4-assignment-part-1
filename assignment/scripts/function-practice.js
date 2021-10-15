@@ -151,21 +151,21 @@ console.log('#10 result of calling posArray(testArray4):', posArray(testArray4))
 // });
 // MY SOLUTION
 function solution(str){
-  let splArr = []; //Empty array to build out and return
-  let count = (str.length % 2); //Give me a reference of whether str is odd or even
+  let splicedArray = []; //Empty array to build out and return
+  let oddOrEven = (str.length % 2); //Give me a reference of whether str is odd or even
   let sliceTwo; //Will be used to slice
   //First conditional appends the underscore to odd-length strings
-  if (count === 1){
+  if (oddOrEven === 1){
     str += '_';
   }
   //Probably a better way to do this part, but this grabs two letters at a time
-  // based on the counted value of i.
+  // and pushes them as a value into the new array.
   for (let i = 0; i < str.length; i++){
     sliceTwo = str.slice(i, (i+2));
-    splArr.push(sliceTwo);
+    splicedArray.push(sliceTwo);
     i++;
   }
-  return splArr;
+  return splicedArray;
 }
 // Some examples of it working!
 let testStr = 'flajflkdfjwmen';
